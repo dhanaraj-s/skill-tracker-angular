@@ -1,0 +1,263 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Dashboard</h1>
+  </div>
+  <!-- /.col-lg-12 -->
+</div>
+
+<div class="card card-block panel panel-default panel-body chart-align">
+  <canvas baseChart 
+    [data]="pieChartData" 
+    [labels]="pieChartLabels" 
+    [chartType]="pieChartType" 
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+<div class="row">
+  <div class="col-lg-2 col-sm-6">
+    <div class="circle-tile">
+
+      <div class="circle-tile-heading dark-blue">
+        <i class="fa fa-users fa-fw fa-3x"></i>
+      </div>
+
+      <div class="circle-tile-content dark-blue">
+        <div class="circle-tile-description text-faded">
+          Registered Candidates
+        </div>
+        <div class="circle-tile-number text-faded">
+          {{registeredCandidates}}
+          <span id="sparklineA"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-sm-6">
+    <div class="circle-tile">
+
+      <div class="circle-tile-heading dark-blue">
+        <i class="fa fa-female fa-fw fa-3x"></i>
+      </div>
+
+      <div class="circle-tile-content dark-blue panel-padding-top">
+        <div class="circle-tile-description text-faded">
+          Female Candidates
+        </div>
+        <div class="circle-tile-number text-faded">
+          {{femaleCandidates}}%
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-sm-6">
+    <div class="circle-tile">
+      <div class="circle-tile-heading dark-blue">
+        <i class="fa fa-male fa-fw fa-3x"></i>
+      </div>
+
+      <div class="circle-tile-content dark-blue panel-padding-top">
+        <div class="circle-tile-description text-faded">
+          Male Candidates
+        </div>
+        <div class="circle-tile-number text-faded">
+          {{maleCandidates}}%
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-sm-6">
+    <div class="circle-tile">
+
+      <div class="circle-tile-heading blue">
+        <i class="fa fa-graduation-cap fa-fw fa-3x"></i>
+      </div>
+
+      <div class="circle-tile-content blue">
+        <div class="circle-tile-description text-faded">
+          Candidates Freshers
+        </div>
+        <div class="circle-tile-number text-faded">
+          {{freshersCandidates}}%
+          <span id="sparklineB"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-sm-6">
+    <div class="circle-tile">
+      <div class="circle-tile-heading blue">
+        <i class="fa fa-group fa-fw fa-3x"></i>
+      </div>
+      <div class="circle-tile-content blue panel-padding-top">
+        <div class="circle-tile-description text-faded">
+          Candidates Rated
+        </div>
+        <div class="circle-tile-number text-faded">
+          {{ratedCandidates}}
+          <span id="sparklineC"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-sm-6">
+    <div class="circle-tile">
+      <div class="circle-tile-heading blue">
+        <i class="fa fa-female fa-fw fa-3x"></i>
+      </div>
+      <div class="circle-tile-content blue">
+        <div class="circle-tile-description text-faded">
+          Female Candidates Rated
+        </div>
+        <div class="circle-tile-number text-faded">
+          {{femaleRatedCandidates}}%
+          <span id="sparklineD"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-sm-6">
+    <div class="circle-tile">
+      <div class="circle-tile-heading blue">
+        <i class="fa fa-male fa-fw fa-3x"></i>
+      </div>
+      <div class="circle-tile-content blue">
+        <div class="circle-tile-description text-faded">
+          Male Candidates Rated
+        </div>
+        <div class="circle-tile-number text-faded">
+          {{maleRatedCandidates}}%
+          <span id="sparklineD"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-sm-6">
+    <div class="circle-tile">
+      <a href="#">
+        <div class="circle-tile-heading light-blue">
+          <i class="fa fa-group fa-fw fa-3x"></i>
+        </div>
+      </a>
+      <div class="circle-tile-content light-blue panel-padding-top">
+        <div class="circle-tile-description text-faded">
+          Level 1 Candidates
+        </div>
+        <div class="circle-tile-number text-faded">
+          {{level1Candidates}}%
+          <span id="sparklineD"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-sm-6">
+    <div class="circle-tile">
+      <a href="#">
+        <div class="circle-tile-heading light-blue">
+          <i class="fa fa-group fa-fw fa-3x"></i>
+        </div>
+      </a>
+      <div class="circle-tile-content light-blue panel-padding-top">
+        <div class="circle-tile-description text-faded">
+          Level 2 Candidates
+        </div>
+        <div class="circle-tile-number text-faded">
+          {{level2Candidates}}%
+          <span id="sparklineD"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-sm-6">
+    <div class="circle-tile">
+      <a href="#">
+        <div class="circle-tile-heading light-blue">
+          <i class="fa fa-group fa-fw fa-3x"></i>
+        </div>
+      </a>
+      <div class="circle-tile-content light-blue panel-padding-top">
+        <div class="circle-tile-description text-faded">
+          Level 3 Candidates
+        </div>
+        <div class="circle-tile-number text-faded">
+          {{level3Candidates}}%
+          <span id="sparklineD"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Table of contents -->
+<div class="row">
+  <table class="table table-striped" ng-hide="users.length==0">
+    <thead></thead>
+    <tbody>
+      <tr>
+        <td><strong>Pic</strong></td>
+        <td><strong>Status</strong></td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="nameSearch" placeholder="Search By Name">
+        </td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="idSearch" placeholder="Search By Associate ID">
+        </td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="emailSearch" placeholder="Search By Email ID">
+        </td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="mobileSearch" placeholder="Search By Mobile No">
+        </td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="skillsSearch" placeholder="Search By Strong Skills">
+        </td>
+        <td>
+          <button class="btn btn-primary a-btn-slide-text" (click)="navigateToAssociate()">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            <span style="margin: 0px 25px 0px 20px;">
+              <strong>Add New Associate</strong>
+            </span>
+          </button>
+        </td>
+      </tr>
+      <tr *ngFor="let associate of associates | associatefilter: nameSearch:idSearch:emailSearch:mobileSearch:skillsSearch">
+        <td>
+          <!-- <textarea name="" id="" cols="2" rows="2"></textarea> -->
+          <img src="http://localhost:8090/skilltracker/getimage/{{associate.associateId}}?{{random}}"
+           alt="http://localhost:8090/skilltracker/getimage/{{associate.associateId}}" 
+           style="max-width:50px; max-height:50px" />
+        </td>
+        <td>
+          <div class="color-box" [ngClass]="{'classBlue': associate.statusBlue === 'Y', 
+          'classRed': associate.statusRed === 'Y', 
+          'classGreen': associate.statusGreen === 'Y'}"></div>
+        </td>
+        <td>{{associate.name}}</td>
+        <td>{{associate.associateId}}</td>
+        <td>{{associate.email}}</td>
+        <td>{{associate.mobile}}</td>
+        <td>{{associate.skillsString}}</td>
+        <td>
+          <button class="btn btn-primary a-btn-slide-text" (click)="editAssociate(associate)">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            <span style="font-size: 11px;">
+              <strong>Edit</strong>
+            </span>
+          </button>
+          <button class="btn btn-primary a-btn-slide-text" (click)="deleteAssociate(associate.associateId)">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <span style="font-size: 11px;">
+              <strong>Delete</strong>
+            </span>
+          </button>
+          <button class="btn btn-primary a-btn-slide-text" (click)="viewAssociate(associate)">
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+            <span style="font-size: 11px;">
+              <strong>View</strong>
+            </span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
