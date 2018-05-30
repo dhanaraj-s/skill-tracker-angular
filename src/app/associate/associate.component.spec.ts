@@ -20,6 +20,7 @@ import { SkillsFilterPipe } from '../skillsfilter.pipe';
 
 describe('AssociateComponent', () => {
   let component: AssociateComponent;
+  let skillfilter: SkillsFilterPipe;
 
   let spyAssociateService: jasmine.SpyObj<AssociateService>;
   let spySkillService: jasmine.SpyObj<SkillsService>;
@@ -116,6 +117,7 @@ describe('AssociateComponent', () => {
         }]
 
     }).compileComponents();
+    skillfilter = new SkillsFilterPipe();
   }));
 
   beforeEach(() => {
@@ -128,6 +130,15 @@ describe('AssociateComponent', () => {
   it('should create', () => {
     component.ngOnInit();
     expect(component).toBeTruthy();
+  });
+
+  it("filter pipe should be instanciated", () => {
+    expect(SkillsFilterPipe).toBeDefined();
+  });
+
+  it("filter pipe should filter", () => {
+    let filtered = skillfilter.transform(skillsList,'HTML5');
+    expect(filtered.length).toBe(1);
   });
 
   it('should save associate details', () => {

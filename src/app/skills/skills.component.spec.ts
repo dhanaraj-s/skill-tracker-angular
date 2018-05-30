@@ -33,6 +33,8 @@ describe('SkillsComponent', () => {
   { "skillId": 18, "skillName": "Spring Cache", "skillRate": null },
   { "skillId": 19, "skillName": "Devops", "skillRate": null }];
 
+  const skill: any = { "skillId": 19, "skillName": "Devops", "skillRate": null };
+
   beforeEach(async(() => {
     const skillsServiceSpy = jasmine.createSpyObj('SkillsService',
       ['viewAllSkills', 'addSkill', 'deleteSkill', 'editSkill']);
@@ -60,4 +62,33 @@ describe('SkillsComponent', () => {
     component.ngOnInit();
     expect(component).toBeTruthy();
   });
+
+  it('should add skills', () => {
+    component.ngOnInit();
+    component.newSkill = "ReactJS";
+    spySkillService.addSkill.and.returnValue(Observable.of(skillsList));
+    component.addSkill();
+    expect(spySkillService.addSkill.calls.count()).toBeGreaterThan(0);
+  });
+
+  it('should update skills', () => {
+    component.ngOnInit();
+    spySkillService.editSkill.and.returnValue(Observable.of(skillsList));
+    component.updateSkill(skill);
+    expect(spySkillService.editSkill.calls.count()).toBeGreaterThan(0);
+  });
+
+  it('should delete skills', () => {
+    component.ngOnInit();
+    spySkillService.deleteSkill.and.returnValue(Observable.of(skillsList));
+    component.deleteSkill(skill);
+    expect(spySkillService.deleteSkill.calls.count()).toBeGreaterThan(0);
+  });
+
+  it('should edit skills', () => {
+    component.ngOnInit();
+    component.editSkill(skill);
+    expect(spySkillService.viewAllSkills.calls.count()).toBeGreaterThan(0);
+  });
+
 });

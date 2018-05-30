@@ -5,11 +5,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { AssociateService } from './associate.service';
+import { SkillsFilterPipe } from '../skillsfilter.pipe'
 
 describe('AssociateService', () => {
 
     let spyHttp: jasmine.SpyObj<Http>;
     let service: AssociateService;
+    let skillsfilter: SkillsFilterPipe;
 
     const associateList = [{"associateId":206156,"name":"Ramraj",
     "email":"cicil.thomas@cognizant.com","mobile":"8664139863","gender":"M",

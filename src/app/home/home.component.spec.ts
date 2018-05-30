@@ -15,6 +15,8 @@ import { AssociateFilterPipe } from '../associatefilter.pipe';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
+  let associatefilter: AssociateFilterPipe;
+
   let spyAssociateService: jasmine.SpyObj<AssociateService>;
   let spySkillService: jasmine.SpyObj<SkillsService>;
 
@@ -61,6 +63,19 @@ describe('HomeComponent', () => {
     "spoken": 16, "communication": 0, "logic": 0, "aptitude": 17, "confidence": 0, "other": "Other"
   }];
 
+  const associate: any = {
+    "associateId": 455355, "name": "Dhanaraj", "email": "dhanaraj.s@cognizant.com",
+    "mobile": "9995886316", "gender": "M", "statusGreen": "N", "statusBlue": "N", "statusRed": "Y",
+    "level1": "N", "level2": "N", "level3": "Y", "remark": "Nothing", "strength": "strength",
+    "weakness": "weakness",
+    "skills": [{ "skillId": 1, "skillName": "HTML5", "skillRate": 16 },
+    { "skillId": 10, "skillName": "Spring", "skillRate": 19 },
+    { "skillId": 11, "skillName": "Spring MVC", "skillRate": 17 },
+    { "skillId": 13, "skillName": "Spring Restful", "skillRate": 17 },
+    { "skillId": 17, "skillName": "Hidernate", "skillRate": 16 }],
+    "spoken": 16, "communication": 0, "logic": 0, "aptitude": 17, "confidence": 0, "other": "Other"
+  };
+
   beforeEach(async(() => {
     const associateServiceSpy = jasmine.createSpyObj('AssociateService', ['viewAllAssociates', 'deleteAssociate']);
     const skillsServiceSpy = jasmine.createSpyObj('SkillsService', ['viewAllSkills']);
@@ -78,7 +93,37 @@ describe('HomeComponent', () => {
         { provide: SkillsService, useValue: skillsServiceSpy },
         { provide: APP_BASE_HREF, useValue: '/' }]
     }).compileComponents();
+    associatefilter = new AssociateFilterPipe();
   }));
+
+  it("filter pipe should be instanciated", () => {
+    expect(AssociateFilterPipe).toBeDefined();
+  });
+
+  it("filter pipe should filter", () => {
+    let filtered = associatefilter.transform(associateList,'', '', '', '', '');
+    expect(filtered.length).toBe(2);
+  });
+
+  it("filter pipe should filter by name", () => {
+    let filtered = associatefilter.transform(associateList,'RamRaj', '', '', '', '');
+    expect(filtered.length).toBe(1);
+  });
+
+  it("filter pipe should filter by email", () => {
+    let filtered = associatefilter.transform(associateList,'', 'cicil', '', '', '');
+    expect(filtered.length).toBe(0);
+  });
+
+  it("filter pipe should filter by id", () => {
+    let filtered = associatefilter.transform(associateList,'', '', '455355', '', '');
+    expect(filtered.length).toBe(0);
+  });
+
+  it("filter pipe should filter by mobile", () => {
+    let filtered = associatefilter.transform(associateList,'', '', '', '99958863', '');
+    expect(filtered.length).toBe(1);
+  });
 
   beforeEach(() => {
     component = TestBed.get(HomeComponent);
@@ -92,4 +137,24 @@ describe('HomeComponent', () => {
     component.ngOnInit();
     expect(component).toBeTruthy();
   });
+
+  it('should edit associate', () => {
+    component.ngOnInit();
+    component.editAssociate(associate);
+    expect(component).toBeTruthy();
+  });
+
+  it('should delete associate', () => {
+    component.ngOnInit();
+    spyAssociateService.deleteAssociate.and.returnValue(Observable.of(associateList));
+    component.deleteAssociate(associate.associateId);
+    expect(spyAssociateService.deleteAssociate.calls.count()).toBeGreaterThan(0);
+  });
+
+  it('should view associate', () => {
+    component.ngOnInit();
+    component.viewAssociate(associate);
+    expect(component).toBeTruthy();
+  });
+
 });
