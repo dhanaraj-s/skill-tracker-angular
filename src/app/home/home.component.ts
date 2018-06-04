@@ -13,7 +13,7 @@ import { Associate } from '../model/associate.model';
 })
 export class HomeComponent implements OnInit {
 
-  public pieChartLabels: string[] = ['HTML5', 'CSS3', 'Java', 'Spring', 'Spring Restful', 'Angular1', 'Angular2', 'React', 'Others'];
+  public pieChartLabels: string[] = ['HTML5', 'CSS3', 'Java', 'Spring', 'Spring Restful', 'Angular 1', 'Angular 2', 'React', 'Others'];
   public pieChartData: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   public pieChartType: string = 'pie';
 
