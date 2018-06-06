@@ -2,13 +2,13 @@
   <h2>Add Skills</h2>
   <hr>
   <div class="form-group">
-      <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search">
+      <input type="text" id="skillSearchText" class="form-control" [(ngModel)]="searchText" placeholder="Search">
   </div>
   <div class="form-group">
     <hr>
       <div class="row col-sm-9" style="padding-bottom: 15px;">
           <div class="input-group">
-              <input type="text" class="form-control" [(ngModel)]="newSkill" 
+              <input type="text" id="newSkill" class="form-control" [(ngModel)]="newSkill" 
               placeholder="Enter new Skill">
               <span class="input-group-btn">
                   <button type="button" class="btn btn-success plus-button value-control" (click)="addSkill()" 
@@ -22,6 +22,7 @@
   <table class="table table-striped" ng-hide="users.length==0">
       <thead></thead>
       <tbody>
+        <tr></tr>
         <tr *ngFor="let skill of skills | skillfilter : searchText">
           <td>
             <input type="text" class="form-control" [(ngModel)]="skill.skillName" 

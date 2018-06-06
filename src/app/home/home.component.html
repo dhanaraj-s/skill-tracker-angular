@@ -6,7 +6,7 @@
 </div>
 
 <div class="card card-block panel panel-default panel-body chart-align">
-  <canvas baseChart 
+  <canvas id="skillChart" baseChart 
     [data]="pieChartData" 
     [labels]="pieChartLabels" 
     [chartType]="pieChartType" 
@@ -23,7 +23,7 @@
       </div>
 
       <div class="circle-tile-content dark-blue">
-        <div class="circle-tile-description text-faded">
+        <div id="registeredCandidates" class="circle-tile-description text-faded">
           Registered Candidates
         </div>
         <div class="circle-tile-number text-faded">
@@ -41,7 +41,7 @@
       </div>
 
       <div class="circle-tile-content dark-blue panel-padding-top">
-        <div class="circle-tile-description text-faded">
+        <div id="femaleCandidates" class="circle-tile-description text-faded">
           Female Candidates
         </div>
         <div class="circle-tile-number text-faded">
@@ -57,7 +57,7 @@
       </div>
 
       <div class="circle-tile-content dark-blue panel-padding-top">
-        <div class="circle-tile-description text-faded">
+        <div id="maleCandidates" class="circle-tile-description text-faded">
           Male Candidates
         </div>
         <div class="circle-tile-number text-faded">
@@ -74,7 +74,7 @@
       </div>
 
       <div class="circle-tile-content blue">
-        <div class="circle-tile-description text-faded">
+        <div id="candidatesFreshers" class="circle-tile-description text-faded">
           Candidates Freshers
         </div>
         <div class="circle-tile-number text-faded">
@@ -90,7 +90,7 @@
         <i class="fa fa-group fa-fw fa-3x"></i>
       </div>
       <div class="circle-tile-content blue panel-padding-top">
-        <div class="circle-tile-description text-faded">
+        <div id="candidatesRated" class="circle-tile-description text-faded">
           Candidates Rated
         </div>
         <div class="circle-tile-number text-faded">
@@ -106,7 +106,7 @@
         <i class="fa fa-female fa-fw fa-3x"></i>
       </div>
       <div class="circle-tile-content blue">
-        <div class="circle-tile-description text-faded">
+        <div id="femaleCandidatesRated" class="circle-tile-description text-faded">
           Female Candidates Rated
         </div>
         <div class="circle-tile-number text-faded">
@@ -122,7 +122,7 @@
         <i class="fa fa-male fa-fw fa-3x"></i>
       </div>
       <div class="circle-tile-content blue">
-        <div class="circle-tile-description text-faded">
+        <div id="maleCandidatesRated" class="circle-tile-description text-faded">
           Male Candidates Rated
         </div>
         <div class="circle-tile-number text-faded">
@@ -140,7 +140,7 @@
         </div>
       </a>
       <div class="circle-tile-content light-blue panel-padding-top">
-        <div class="circle-tile-description text-faded">
+        <div id="levelOneCandidates" class="circle-tile-description text-faded">
           Level 1 Candidates
         </div>
         <div class="circle-tile-number text-faded">
@@ -158,7 +158,7 @@
         </div>
       </a>
       <div class="circle-tile-content light-blue panel-padding-top">
-        <div class="circle-tile-description text-faded">
+        <div id="levelTwoCandidates" class="circle-tile-description text-faded">
           Level 2 Candidates
         </div>
         <div class="circle-tile-number text-faded">
@@ -176,7 +176,7 @@
         </div>
       </a>
       <div class="circle-tile-content light-blue panel-padding-top">
-        <div class="circle-tile-description text-faded">
+        <div id="levelThreeCandidates" class="circle-tile-description text-faded">
           Level 3 Candidates
         </div>
         <div class="circle-tile-number text-faded">
